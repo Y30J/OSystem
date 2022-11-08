@@ -1,10 +1,11 @@
 #![no_std]
 #![no_main]
+#![feature(panic_info_message)]
+#[macro_use]
 
 mod sbi;
 mod console;
-
-use core::panic::PanicInfo;
+mod lang_items;
 
 pub fn sys_write(fd: usize, buffer: &[u8]) -> isize {
   syscall(SYSCALL_WRITE, [fd, buffer.as_ptr() as usize, buffer.len()])
