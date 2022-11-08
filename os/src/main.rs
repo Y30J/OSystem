@@ -73,4 +73,12 @@ extern "C" fn _start() {
     sys_exit(9);
 }
 
+use core::arch::global_asm;
+
+global_asm!(include_str!("entry.asm"));
+
+#[no_mangle]
+pub fn rust_main() -> ! {
+    loop{};
+}
 
