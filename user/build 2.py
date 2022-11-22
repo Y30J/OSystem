@@ -23,3 +23,4 @@ for app in apps:
     with open(linker, 'w+') as f:
         f.writelines(lines_before)
     app_id = app_id + 1
+
