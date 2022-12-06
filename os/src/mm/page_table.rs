@@ -58,6 +58,7 @@ pub struct PageTable {
     frames: Vec<FrameTracker>,
 }
 
+/// Assume that it won't oom when creating/mapping.
 impl PageTable {
     pub fn new() -> Self {
         let frame = frame_alloc().unwrap();
