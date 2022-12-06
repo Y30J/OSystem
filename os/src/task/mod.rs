@@ -125,4 +125,3 @@ pub fn exit_current_and_run_next() {
     mark_current_exited();
     run_next_task();
 }
-

@@ -5,6 +5,8 @@
 
 use core::arch::global_asm;
 
+extern crate alloc;
+
 #[macro_use]
 extern crate bitflags;
 
@@ -20,8 +22,6 @@ mod task;
 mod timer;
 mod mm;
 mod sync;
-
-extern crate alloc;
 
 global_asm!(include_str!("entry.asm"));
 global_asm!(include_str!("link_app.S"));
@@ -40,4 +40,9 @@ pub fn rust_main() -> ! {
     println!("[Kernel] Hello, world!");
     mm::init();
     trap::init();
-
+    loader::load_apps();
+    trap::enable_timer_interrupt();
+    timer::set_next_trigger();
+    task::run_first_task();
+    panic!("Unreachable in rust_main!");
+}

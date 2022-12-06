@@ -1,10 +1,3 @@
-#[derive(Copy, Clone, PartialEq)]
-pub enum TaskStatus {
-    UnInit,
-    Ready,
-    Running,
-    Exited,
-}
 #[derive(Copy, Clone)]
 pub struct TaskControlBlock {
     pub task_cx_ptr: usize,
@@ -17,3 +10,10 @@ impl TaskControlBlock {
     }
 }
 
+#[derive(Copy, Clone, PartialEq)]
+pub enum TaskStatus {
+    UnInit,
+    Ready,
+    Running,
+    Exited,
+}

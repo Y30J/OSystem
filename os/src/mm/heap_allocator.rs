@@ -13,12 +13,10 @@ pub fn init_heap() {
             .init(HEAP_SPACE.as_ptr() as usize, KERNEL_HEAP_SIZE);
     }
 }
-
 #[alloc_error_handler]
 pub fn handle_alloc_error(layout: core::alloc::Layout) -> ! {
     panic!("Heap allocation error, layout = {:?}", layout);
 }
-
 #[allow(unused)]
 pub fn heap_test() {
     use alloc::boxed::Box;
